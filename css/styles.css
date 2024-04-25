@@ -144,7 +144,7 @@ ul {
 }
 
 /*===========================
- секція герой */
+ ----------------секція герой ------------------------*/
 .hero-img {
   max-width: 1600px;
   height: 600px;
@@ -191,7 +191,7 @@ ul {
   background-color: var(--accent-color);
   cursor: pointer;
 }
-/* модальне вікно */
+/*--------- модальне вікно ---------*/
 .backdrop {
   position: fixed;
   z-index: 1;
@@ -203,33 +203,34 @@ ul {
 
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 1;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 .backdrop.is-hidden .modal-wrapper {
-  transform: translate(-50%, -50%) scale(1, 1);
+  transform: translate(-50%, -50%) scale(0, 6);
 }
 .modal-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
   width: 528px;
   height: 581px;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
     0 1px 3px 0 rgba(0, 0, 0, 0.12);
-
   background-color: #fff;
   border-radius: 4px;
+  padding: 40px;
 }
+/* --кнопка закриття модального вікна-- */
 .modal-btn {
   position: absolute;
   top: 10px;
@@ -237,19 +238,186 @@ ul {
   width: 30px;
   height: 30px;
 
+  background-size: contain;
+  background-origin: border-box;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  cursor: pointer;
+  outline: transparent;
+}
+
+.modal-btn-icon {
+  width: 18px;
+  height: 18px;
+  fill: #000;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-btn-icon:hover {
+  fill: #2196f3;
+}
+.modal-btn:focus .modal-btn-icon {
+  fill: #2196f3;
+}
+
+/*-- form modal-- */
+.modal-title {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: #212121;
+  margin-bottom: 12px;
+}
+.form-modal-group {
+  position: relative;
+  display: block;
+}
+.form-modal-label {
+  display: block;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  color: #757575;
+}
+.form-modal-input {
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  height: 40px;
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 32px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.form-modal-input:focus,
+.form-modal-text:focus {
+  border: solid #2196f3;
+  outline: transparent;
+}
+.form-modal-input:hover,
+.form-modal-text:hover {
+  border: solid #2196f3;
+}
+.form-modal-group:hover .form-modal-icon {
+  fill: #2196f3;
+}
+.form-modal-input:focus + .form-modal-icon {
+  fill: #2196f3;
+}
+.form-modal-text {
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  width: 100%;
+  height: 120px;
+  resize: none;
+  margin-top: 4px;
+  margin-bottom: 20px;
+  padding: 12px 16px 12px 16px;
+
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.form-modal-icon {
+  position: absolute;
+  left: 12px;
+  bottom: 21px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.polise-private {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71429;
+  letter-spacing: 0.03em;
+  color: #757575;
+  margin-left: 9px;
+}
+.form-polisu-grup {
+  display: flex;
+  align-items: center;
+}
+.polise-private-contract {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #2196f3;
+}
+/* --checkbox-- */
+.custom-checkbox {
+  width: 16px;
+  height: 15px;
+  left: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
-  border-radius: 50%;
-  fill: #fff;
-  stroke-width: 1px;
-  stroke: rgba(0, 0, 0, 0.1);
-  padding: 0;
+  border-radius: 4px;
+  border: 2px solid #212121;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* секція 3 features особливості */
+.checkbox:checked + .custom-checkbox {
+  background-color: #2196f3;
+  background-size: contain;
+  border-color: #2196f3;
+  background-origin: border-box;
+}
+.custom-checbocs-icon {
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.checkbox:checked + .custom-checkbox .custom-checbocs-icon {
+  opacity: 1;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+/* ---button-- */
+.send-btn {
+  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  background: #2196f3;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875;
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+  cursor: pointer;
+  border: transparent;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.send-btn:hover,
+.send-btn:focus {
+  background-color: #188ce8;
+  outline: transparent;
+}
+
+/*----------------- секція 3 features особливості ---------*/
 
 .section-features {
   padding-top: 94px;
@@ -475,7 +643,6 @@ ul {
   color: var(--accent-color);
   text-decoration: none;
   outline: none;
-  transition: 750ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-studio {
   color: var(--white-col);
@@ -521,15 +688,72 @@ ul {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #fff;
-
   margin-bottom: 20px;
 }
-
 .socials-link {
   background-color: rgba(255, 255, 255, 0.1);
 }
 .footikon .social-icon {
   fill: #fff;
+}
+
+/*-- form futer--*/
+.in-email {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  width: 358px;
+  height: 50px;
+
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  background: rgba(33, 150, 243, 0);
+  padding: 15px 16px;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.6);
+  outline: transparent;
+}
+.btn-form {
+  position: relative;
+  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  padding: 0px;
+  top: -5px;
+  left: 12px;
+
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  background: #2196f3;
+  color: #fff;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875;
+  letter-spacing: 0.06em;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-form:hover,
+.btn-form:focus {
+  background-color: #188ce8;
+  outline: transparent;
+}
+
+.btn-icon {
+  position: absolute;
+  top: 13px;
+  right: 28px;
+  bottom: 13px;
+  left: 148px;
+}
+.sing-up {
+  position: absolute;
+  top: 10px;
+  right: 62px;
+  left: 28px;
+  bottom: 10px;
 }
 
 /* ==================================================
@@ -583,7 +807,7 @@ ul {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.08),
     0 3px 1px 0 rgba(0, 0, 0, 0.1);
 
-  outline: none;
+  outline: transparent;
 }
 
 .portfolio .btn-projects {
@@ -630,7 +854,7 @@ ul {
 .project {
   display: inline-block;
   text-decoration: none;
-  outline: none;
+  outline: transparent;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project:hover,
